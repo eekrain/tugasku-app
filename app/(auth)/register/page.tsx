@@ -47,8 +47,6 @@ const RegisterPage = (props: Props) => {
           label="Konfirmasi password"
         />
 
-        <pre>{JSON.stringify(result, null, 2)}</pre>
-
         <Button type="submit" className="mt-4">
           Login
         </Button>
