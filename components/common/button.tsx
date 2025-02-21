@@ -15,14 +15,16 @@ const variantStyles = {
   default: "bg-primary text-primary-foreground shadow hover:bg-primary/90",
   destructive:
     "bg-destructive text-destructive-foreground shadow hover:bg-destructive/90",
+  outline:
+    "bg-white text-foreground border border-border shadow hover:bg-muted/90",
 };
 
 type Props = {
   size?: "default" | "icon" | "sm";
-  variant?: "default" | "destructive";
+  variant?: "default" | "destructive" | "outline";
   children: React.ReactNode;
   className?: string;
-} & Pick<React.ComponentProps<"button">, "type">;
+} & React.ComponentProps<"button">;
 
 export const Button = ({
   size = "default",
@@ -30,6 +32,7 @@ export const Button = ({
   children,
   type = "button",
   className,
+  ...rest
 }: Props) => {
   return (
     <button
@@ -40,6 +43,7 @@ export const Button = ({
         className,
       )}
       type={type}
+      {...rest}
     >
       {children}
     </button>
