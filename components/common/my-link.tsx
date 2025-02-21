@@ -4,9 +4,8 @@ import { twMerge } from "tailwind-merge";
 
 const linkStyles = {
   default: "inline text-primary underline-offset-2 hover:underline",
-  navInactive:
-    "inline font-medium text-gray-700 hover:text-primary font-semibold",
-  navActive: "inline font-medium text-primary font-semibold",
+  navInactive: "inline  text-gray-700 hover:text-primary font-semibold",
+  navActive: "inline  text-primary font-semibold",
 };
 
 type Props = {
