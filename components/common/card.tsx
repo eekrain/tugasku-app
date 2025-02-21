@@ -16,12 +16,8 @@ export const Card = ({ title, description, className, children }: Props) => {
         className,
       )}
     >
-      {title && (
-        <h3 className="text-center font-title text-3xl font-semibold">
-          {title}
-        </h3>
-      )}
-      {description && <p className="mt-2 text-center">{description}</p>}
+      {title && <h3 className="font-title text-3xl font-semibold">{title}</h3>}
+      {description && <p className="mt-2">{description}</p>}
       {children}
     </div>
   );

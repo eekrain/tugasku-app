@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { serverEnv } from "@/lib/env";
+import { serverEnv } from "@/lib/env/server";
 import { drizzle } from "drizzle-orm/node-postgres";
 import * as schema from "./schema";
 

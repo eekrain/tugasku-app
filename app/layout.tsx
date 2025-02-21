@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins, Inter } from "next/font/google";
 import "./globals.css";
 import { ToastProvider } from "@/components/common/toast";
+import { TanstackProvider } from "@/components/tanstack-provider";
 
 const fontPoppins = Poppins({
   variable: "--font-poppins",
@@ -30,7 +31,9 @@ export default function RootLayout({
       <body
         className={`${fontInter.variable} ${fontPoppins.variable} bg-background font-sans text-foreground antialiased`}
       >
-        <ToastProvider>{children}</ToastProvider>
+        <ToastProvider>
+          <TanstackProvider>{children}</TanstackProvider>
+        </ToastProvider>
       </body>
     </html>
   );

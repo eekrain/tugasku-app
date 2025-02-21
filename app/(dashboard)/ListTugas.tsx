@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Button } from "@/components/common/button";
 import { Card } from "@/components/common/card";
 import { Select } from "@/components/common/select";
+import Link from "next/link";
 
 const sortOptions = [
   { label: "A - Z", value: "asc" },
@@ -77,7 +78,9 @@ export const ListTugas = () => {
       <div className="flex items-center justify-between">
         <h2 className="font-title text-2xl font-semibold">Tugas</h2>
 
-        <Button size="sm">Buat tugas</Button>
+        <Link href="/new-task">
+          <Button size="sm">Buat tugas</Button>
+        </Link>
       </div>
       <div className="mt-4 flex flex-col items-center justify-end gap-6 lg:flex-row">
         <div className="flex items-center gap-2">

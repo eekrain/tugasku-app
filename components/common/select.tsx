@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import { twMerge } from "tailwind-merge";
 
-type Option = { value: string; label: string };
+export type Option = { value: string; label: string };
 
 type SelectProps = {
   options: Option[];

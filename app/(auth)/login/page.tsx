@@ -24,9 +24,9 @@ const LoginPage = (props: Props) => {
     <Card
       title="Login"
       description="Silahkan login dengan email anda"
-      className="mx-auto max-w-md"
+      className="mx-auto max-w-md text-center"
     >
-      <form onSubmit={onSubmit} className="mt-4 flex flex-col gap-4">
+      <form onSubmit={onSubmit} className="mt-4 flex flex-col gap-4 text-left">
         <TextField form={form} name="username" label="Username" />
         <TextField
           form={form}

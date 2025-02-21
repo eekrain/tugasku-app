@@ -1,6 +1,7 @@
 import { pgTable, timestamp, varchar, pgEnum } from "drizzle-orm/pg-core";
 import { createId } from "@paralleldrive/cuid2";
 import { relations } from "drizzle-orm";
+import { tasks } from "./task";
 
 export const roleEnum = pgEnum("role", ["lead", "team"]);
 

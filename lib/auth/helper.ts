@@ -42,16 +42,6 @@ export const getUser = cache(async (): Promise<User | null> => {
   return user;
 });
 
-export const isLead = cache(async (): Promise<boolean> => {
-  const user = await getUser();
-  return user?.role === "lead";
-});
-
-export const isAuthenticated = cache(async (): Promise<boolean> => {
-  const user = await getUser();
-  return Boolean(user);
-});
-
 export const startSession = async (userId: string) => {
   const { token } = await narvik.createSession(userId, {} as Session);
   const cookie = narvik.createCookie(token);

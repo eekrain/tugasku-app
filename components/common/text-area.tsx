@@ -5,9 +5,15 @@ type Props = {
   label: string;
   placeholder?: string;
   form: UseFormReturn<any, any, undefined>;
-} & Pick<ComponentProps<"input">, "type">;
+} & Pick<ComponentProps<"textarea">, "rows">;
 
-export const TextField = ({ name, label, form, ...rest }: Props) => {
+export const TextAreaField = ({
+  name,
+  label,
+  form,
+  rows = 3,
+  ...rest
+}: Props) => {
   const errMsg = form.formState.errors[name]?.message;
 
   return (
@@ -15,9 +21,9 @@ export const TextField = ({ name, label, form, ...rest }: Props) => {
       <label htmlFor={name} className="mb-1">
         {label}
       </label>
-      <input
-        type="text"
+      <textarea
         id={name}
+        rows={rows}
         className="rounded border border-input px-4 py-2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
         {...rest}
         {...form.register(name)}

@@ -18,6 +18,7 @@ const RegisterPage = (props: Props) => {
   });
 
   const { execute, result } = useAction(registerAction);
+  console.log("🚀 ~ RegisterPage ~ result:", result);
 
   const onSubmit = form.handleSubmit((data) => {
     execute(data);
@@ -27,9 +28,9 @@ const RegisterPage = (props: Props) => {
     <Card
       title="Pendaftaran"
       description="Segera mendaftar untuk mengelola tugas dengan mudah bersama Tugasku"
-      className="mx-auto max-w-lg"
+      className="mx-auto max-w-lg text-center"
     >
-      <form onSubmit={onSubmit} className="mt-4 flex flex-col gap-4">
+      <form onSubmit={onSubmit} className="mt-4 flex flex-col gap-4 text-left">
         <TextField form={form} name="username" label="Username" />
         <TextField form={form} name="firstName" label="Nama depan" />
         <TextField form={form} name="lastName" label="Nama belakang" />
@@ -45,6 +46,8 @@ const RegisterPage = (props: Props) => {
           type="password"
           label="Konfirmasi password"
         />
+
+        <pre>{JSON.stringify(result, null, 2)}</pre>
 
         <Button type="submit" className="mt-4">
           Login
