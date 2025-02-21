@@ -45,9 +45,8 @@ const getLogs = async () => {
 
 export default async function Page() {
   const user = await getUser();
-  if (user?.role !== "lead") {
-    redirect("/login");
-  }
+  if (!user) redirect("/login");
+  else if (user.role !== "lead") redirect("/");
 
   const logs = await getLogs();
 
