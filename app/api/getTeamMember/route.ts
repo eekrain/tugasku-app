@@ -1,7 +1,12 @@
 import { db } from "@/db";
+import { getUser } from "@/lib/auth/helper";
 import { type NextRequest } from "next/server";
 
 export async function GET(request: NextRequest) {
+  const user = await getUser();
+  if (!user || user.role !== "lead")
+    return new Response("Unauthorized", { status: 401 });
+
   const searchParams = request.nextUrl.searchParams;
   const username = searchParams.get("username");
 

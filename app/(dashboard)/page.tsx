@@ -8,11 +8,12 @@ export default async function Home() {
   if (!user) {
     redirect("/login");
   }
+  const isLead = user.role === "lead";
 
   return (
     <div className="container relative mb-16 mt-6">
       <div className="relative grid gap-y-8 lg:grid-cols-[60%_40%] lg:gap-y-0 lg:space-x-8">
-        <ListTugas />
+        <ListTugas isLead={isLead} />
         <TaskStatistic />
       </div>
     </div>

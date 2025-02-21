@@ -10,6 +10,8 @@ export const taskStatus = pgEnum("task_status", [
   "reject",
 ]);
 
+export type TaskStatusEnum = (typeof taskStatus.enumValues)[number];
+
 export const tasks = pgTable("tasks", {
   id: varchar({ length: 128 })
     .primaryKey()
