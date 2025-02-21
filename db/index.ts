@@ -7,7 +7,7 @@ import * as schema from "./schema";
 export const db = drizzle({
   connection: {
     connectionString: serverEnv.POSTGRES_URL,
-    ssl: true,
   },
   schema,
+  casing: "snake_case",
 });

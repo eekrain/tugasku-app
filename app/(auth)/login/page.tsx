@@ -6,12 +6,19 @@ import { TextField } from "@/components/common/text-field";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { loginSchema, TLoginForm } from "@/lib/schema/auth";
+import { loginSchema, TLoginForm } from "@/lib/validation/auth";
+import { loginAction } from "@/lib/auth/action";
+import { useAction } from "next-safe-action/hooks";
 
 type Props = {};
 
 const LoginPage = (props: Props) => {
   const form = useForm<TLoginForm>({ resolver: zodResolver(loginSchema) });
+  const { execute, result } = useAction(loginAction);
+
+  const onSubmit = form.handleSubmit((data) => {
+    execute(data);
+  });
 
   return (
     <Card
@@ -19,14 +26,14 @@ const LoginPage = (props: Props) => {
       description="Silahkan login dengan email anda"
       className="mx-auto max-w-md"
     >
-      <form
-        onSubmit={form.handleSubmit((data) => {
-          console.log("🚀 ~ <formonSubmit={form.handleSubmit ~ data:", data);
-        })}
-        className="flex flex-col gap-4"
-      >
-        <TextField form={form} name="email" label="Email" />
-        <TextField form={form} name="password" label="Password" />
+      <form onSubmit={onSubmit} className="mt-4 flex flex-col gap-4">
+        <TextField form={form} name="username" label="Username" />
+        <TextField
+          form={form}
+          name="password"
+          type="password"
+          label="Password"
+        />
 
         <Button type="submit" className="mt-4">
           Login

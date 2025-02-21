@@ -1,9 +1,9 @@
 import * as z from "zod";
 
 const baseAccountSchema = z.object({
-  email: z
-    .string({ message: "Email harus diisi" })
-    .email({ message: "Email tidak valid" }),
+  username: z
+    .string({ message: "Username harus diisi" })
+    .min(3, { message: "Username minimal 3 karakter" }),
   firstName: z
     .string({ message: "Nama depan harus diisi" })
     .min(1, { message: "Nama depan harus diisi" }),
@@ -28,7 +28,7 @@ export const registerSchema = baseAccountSchema.refine(
 export type TRegisterForm = z.infer<typeof registerSchema>;
 
 export const loginSchema = baseAccountSchema.pick({
-  email: true,
+  username: true,
   password: true,
 });
 export type TLoginForm = z.infer<typeof loginSchema>;
