@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect, ComponentProps } from "react";
 import { Button } from "./button";
+import { twMerge } from "tailwind-merge";
 
 type Props = {
   trigger: React.ReactNode;
@@ -7,7 +8,7 @@ type Props = {
 };
 
 export const DropdownMenu = ({ trigger, children }: Props) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -27,10 +28,11 @@ export const DropdownMenu = ({ trigger, children }: Props) => {
       <Button
         type="button"
         variant="outline"
-        size="sm"
+        size="icon"
         onClick={() => setIsOpen(!isOpen)}
+        className="inline-flex items-center justify-center"
       >
-        anjing
+        {trigger}
       </Button>
       {isOpen && (
         <div className="absolute right-0 z-50 mt-2 w-48 rounded-md border border-gray-300 bg-white shadow-lg">
@@ -45,9 +47,15 @@ type ItemProps = {
   children: React.ReactNode;
 } & ComponentProps<"li">;
 
-export const DropdownItem = ({ children, ...rest }: ItemProps) => {
+export const DropdownItem = ({ children, className, ...rest }: ItemProps) => {
   return (
-    <li className="cursor-pointer px-4 py-2 hover:bg-gray-100" {...rest}>
+    <li
+      className={twMerge(
+        "cursor-pointer px-4 py-2 hover:bg-gray-100",
+        className,
+      )}
+      {...rest}
+    >
       {children}
     </li>
   );

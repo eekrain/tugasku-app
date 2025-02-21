@@ -5,6 +5,7 @@ import { twMerge } from "tailwind-merge";
 export type Option = { value: string; label: string };
 
 type SelectProps = {
+  value?: string;
   options: Option[];
   onChange: (value: string) => void;
   className?: string;
@@ -12,6 +13,7 @@ type SelectProps = {
 };
 
 export const Select: React.FC<SelectProps> = ({
+  value,
   className,
   options,
   onChange,
@@ -42,9 +44,17 @@ export const Select: React.FC<SelectProps> = ({
     };
   }, []);
 
+  useEffect(() => {
+    if (value) {
+      const found = options.find((val) => val.value === value);
+      if (found) setSelected(found);
+    }
+  }, [value]);
+
   return (
     <div className={twMerge("relative w-64", className)} ref={dropdownRef}>
       <button
+        type="button"
         className={`w-full rounded-md border border-gray-300 bg-white p-2 text-left focus:ring-2 focus:ring-blue-500 ${centerItem ? "text-center" : ""}`}
         onClick={() => setIsOpen(!isOpen)}
       >

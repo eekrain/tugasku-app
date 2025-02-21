@@ -24,7 +24,7 @@ export const Timeline = ({ data }: Props) => {
         <div key={item.id} className="mb-8 ml-4">
           <div className="absolute -left-[7px] mt-1.5 h-3 w-3 rounded-full bg-blue-500"></div>
           <div className="rounded-lg bg-white p-4 shadow-md">
-            <div className="flex items-center justify-between">
+            <div className="mb-2 flex items-center justify-between">
               <p className="font-semibold uppercase">{item.action}</p>
               <p className="text-sm text-muted-foreground">
                 {dayjs().to(item.date)}
@@ -34,16 +34,18 @@ export const Timeline = ({ data }: Props) => {
             {/* Changes */}
 
             <table className="text-xs">
-              {item.changes.map((val) => (
-                <tr key={val.key}>
-                  <td className="capitalize">{val.key}</td>
-                  <td className="px-2">:</td>
-                  <td>{val.value}</td>
-                </tr>
-              ))}
+              <tbody>
+                {item.changes.map((val) => (
+                  <tr key={val.key}>
+                    <td className="capitalize">{val.key}</td>
+                    <td className="px-2">:</td>
+                    <td>{val.value}</td>
+                  </tr>
+                ))}
+              </tbody>
             </table>
 
-            <div className="flex justify-end text-sm">
+            <div className="mt-1 flex justify-end text-sm">
               by: {item.byUsername}
             </div>
           </div>

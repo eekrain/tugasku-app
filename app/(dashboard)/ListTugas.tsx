@@ -7,20 +7,8 @@ import Link from "next/link";
 import { useQuery } from "@tanstack/react-query";
 import { getTasks } from "@/lib/services/getTasks";
 import { TaskStatusEnum } from "@/db/schema";
-
-const filterOptions = [
-  { label: "Not Started", value: "not_started" },
-  { label: "On Progress", value: "on_progress" },
-  { label: "Done", value: "done" },
-  { label: "Reject", value: "reject" },
-];
-
-const sortOptions = [
-  { label: "A - Z", value: "title-asc" },
-  { label: "Z - A", value: "title-desc" },
-  { label: "Newest", value: "created-at-desc" },
-  { label: "Oldest", value: "created-at-asc" },
-];
+import { FaPen } from "react-icons/fa6";
+import { FILTER_OPTS, SORT_OPTS } from "@/lib/constant";
 
 const badgeStyles: Record<string, string> = {
   not_started: "bg-gray-300 text-gray-700",
@@ -50,8 +38,8 @@ type Props = {
 };
 
 export const ListTugas = ({ isLead }: Props) => {
-  const [status, setStatus] = useState(filterOptions[0].value);
-  const [sort, setSort] = useState(sortOptions[0].value);
+  const [status, setStatus] = useState(FILTER_OPTS[0].value);
+  const [sort, setSort] = useState(SORT_OPTS[0].value);
 
   const { data: tasks } = useQuery({
     queryKey: ["getTasks", status, sort],
@@ -64,7 +52,7 @@ export const ListTugas = ({ isLead }: Props) => {
         <h2 className="font-title text-2xl font-semibold">Tugas</h2>
 
         {isLead && (
-          <Link href="/new-task">
+          <Link href="/task/new">
             <Button size="sm">Buat tugas</Button>
           </Link>
         )}
@@ -74,7 +62,7 @@ export const ListTugas = ({ isLead }: Props) => {
         <div className="flex items-center gap-2">
           <span>Filter</span>
           <Select
-            options={filterOptions}
+            options={FILTER_OPTS}
             onChange={(val) => setStatus(val)}
             className="w-36"
             centerItem
@@ -83,7 +71,7 @@ export const ListTugas = ({ isLead }: Props) => {
         <div className="flex items-center gap-2">
           <span>Sort</span>
           <Select
-            options={sortOptions}
+            options={SORT_OPTS}
             onChange={(val) => setSort(val)}
             className="w-20"
             centerItem
@@ -94,10 +82,18 @@ export const ListTugas = ({ isLead }: Props) => {
         {tasks && tasks.length > 0 ? (
           tasks.map((item) => (
             <div key={item.id} className="rounded-md border border-border p-4">
-              <p className="font-title text-lg font-semibold">{item.title}</p>
+              <div className="flex items-center justify-between">
+                <p className="font-title text-lg font-semibold">{item.title}</p>
+
+                <Link href={`/task/edit/${item.id}`}>
+                  <Button variant="outline" size="icon">
+                    <FaPen />
+                  </Button>
+                </Link>
+              </div>
               <p className="mt-2 text-sm">{item.description}</p>
 
-              <div className="flex items-center justify-end">
+              <div className="mt-4 flex items-center justify-end">
                 <StatusBadge status={item.status} />
               </div>
             </div>

@@ -8,7 +8,7 @@ const baseStyles =
 const sizeStyles = {
   default: "py-2 px-4 text-lg font-medium",
   sm: "py-2 px-3 font-medium text-sm",
-  icon: "size-8",
+  icon: "size-8 inline-flex justify-center items-center",
 };
 
 const variantStyles = {

@@ -21,6 +21,8 @@ const getLogs = async () => {
         columns: { id: true, title: true },
       },
     },
+
+    orderBy: (t, { desc }) => desc(t.created_at),
   });
 
   const result: TimelineItem[] = data.map((val) => {
