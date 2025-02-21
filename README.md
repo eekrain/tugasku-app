@@ -35,5 +35,5 @@ pnpm build
 Kemudian untuk memastikan hasil build bekerja dengan semestinya, check dengan run:
 
 ```bash
-pnpm preview
+pnpm start
 ```
