@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tugasku App - A todo application - Ardian Eka Candra
 
-## Getting Started
+Aplikasi **Tugasku** adalah aplikasi untuk pembayaran yang digunakan sebagai assignment Full Stack Programmer yang dibuat mengunakan Next.js 15. Akses form di-validasi dengan [zod validator](https://zod.dev/) dan di manage menggunakan [react-hook-form](https://react-hook-form.com/). Styling menggunakan [tailwind](https://v3.tailwindcss.com/docs/installation) untuk mempercepat pengerjaan. Semua code di tulis dengan type safe menggunakan Typescript.
 
-First, run the development server:
+# Development
+
+Project ini menggunakan NodeJS dengan package manager PNPM. Pastikan Anda sudah menginstall [PNPM](https://pnpm.io/).
+
+#### 1. Instalasi packages
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#### 2. Setup environment variable .env
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Pastikan anda membuat file .env, dan isi persis seperti di .example.env.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+#### 3. Running dev mode
 
-## Learn More
+Setelah .env sudah di isi. Anda bisa run:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+pnpm dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+#### 3. Bundling
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Untuk mem-bundling app, anda bisa run:
 
-## Deploy on Vercel
+```bash
+pnpm build
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Kemudian untuk memastikan hasil build bekerja dengan semestinya, check dengan run:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+pnpm preview
+```
