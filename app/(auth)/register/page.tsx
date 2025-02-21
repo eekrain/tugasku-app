@@ -48,7 +48,7 @@ const RegisterPage = (props: Props) => {
         />
 
         <Button type="submit" className="mt-4">
-          Login
+          Register
         </Button>
 
         <p className="text-center">
