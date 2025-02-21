@@ -1,8 +1,8 @@
 "use client";
-import { Button } from "@/components/button";
-import { Card } from "@/components/card";
-import { MyLink } from "@/components/my-link";
-import { TextField } from "@/components/text-field";
+import { Button } from "@/components/common/button";
+import { Card } from "@/components/common/card";
+import { MyLink } from "@/components/common/my-link";
+import { TextField } from "@/components/common/text-field";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";

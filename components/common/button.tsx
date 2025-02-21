@@ -1,13 +1,13 @@
 "use client";
 import React from "react";
-import { UseFormReturn } from "react-hook-form";
 import { twMerge } from "tailwind-merge";
 
 const baseStyles =
-  "rounded-md px-6 font-title py-3 text-lg transition-all duration-300 disabled:pointer-events-none disabled:opacity-50 disabled:bg-gray-600";
+  "rounded-md font-title text-lg transition-all duration-300 disabled:pointer-events-none disabled:opacity-50 disabled:bg-gray-600";
 
 const sizeStyles = {
-  default: "py-3 px-6 text-lg font-medium",
+  default: "py-2 px-4 text-lg font-medium",
+  sm: "py-2 px-3 font-medium text-sm",
   icon: "size-8",
 };
 
@@ -18,7 +18,7 @@ const variantStyles = {
 };
 
 type Props = {
-  size?: "default" | "icon";
+  size?: "default" | "icon" | "sm";
   variant?: "default" | "destructive";
   children: React.ReactNode;
   className?: string;
